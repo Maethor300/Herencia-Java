@@ -1,6 +1,8 @@
 package Main;
 
 import Electrodomestico.Electrodomestico;
+import Lavadora.Lavadora;
+import Televisor.Televisor;
 
 import java.util.Scanner;
 
@@ -10,7 +12,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Electrodomestico electrodomestico = new Electrodomestico();
-         do {
+         /*Lavadora lavadora = new Lavadora();
+        lavadora.crearElectrodomestico();
+        System.out.println(lavadora.toString());*/
+         Televisor televisor = new Televisor();
+         televisor.crearTelevisor();
+        System.out.println(televisor.toString());
+           /*do {
              System.out.println("------Menu------");
              System.out.println("1: Crear el electrodomestico");
              System.out.println("2: Monstrar info");
@@ -22,6 +30,6 @@ public class Main {
                      System.out.println(electrodomestico.toString());
                  }
              }
-         }while (true);
+         }while (true);*/
     }
 }

@@ -4,7 +4,7 @@ import EnumConsumo.ConsumoEnergia;
 
 import java.util.Scanner;
 
-public class Electrodomestico {
+public  class Electrodomestico {
     protected String name;
     protected double precio;
     protected String color;
@@ -30,7 +30,7 @@ public class Electrodomestico {
                 this.letras = letra;
                   break;
             }else {
-                letra = 'f';
+                letras = 'f';
             }
         }
     }
@@ -66,18 +66,18 @@ public class Electrodomestico {
     public void precioFinal(double peso, String letra){
         for (ConsumoEnergia i : ConsumoEnergia.values()
              ) {
-            if(letra.equals(i.toString().toLowerCase())&&peso>1&&peso<=19){
+            boolean equals = letra.equals(i.toString().toLowerCase());
+            if(equals &&peso>1&&peso<=19){
                 setPrecio(i.getNumber() + 100);
-                break;
-            } else if (letra.equals(i.toString().toLowerCase())&&peso>20&&peso<=49) {
+
+            } else if (equals &&peso>=20&&peso<=49) {
                 setPrecio(i.getNumber() + 500);
-                break;
-            } else if (letra.equals(i.toString().toLowerCase())&&peso>50&&peso<=79) {
+
+            } else if (equals &&peso>=50&&peso<=79) {
                 setPrecio(i.getNumber() + 800);
-                break;
-            } else {
+
+            }else if(equals &&peso>=80){
                 setPrecio(i.getNumber() + 1000);
-                break;
             }
         }
     }
@@ -120,6 +120,8 @@ public class Electrodomestico {
     public void setName(String name) {
         this.name = name;
     }
+
+
 
     @Override
     public String toString() {
