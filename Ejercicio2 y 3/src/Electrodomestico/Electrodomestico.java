@@ -14,13 +14,15 @@ public  class Electrodomestico {
 
     }
 
-    public Electrodomestico(String name,double precio, String color, char letras, double peso) {
+    public Electrodomestico(String name, String color, char letras, double peso) {
         this.name = name;
-        this.precio = precio;
         this.color = color;
         this.letras = letras;
         this.peso = peso;
+        this.precio = precioFinal(peso,String.valueOf(this.letras));
     }
+
+
 
     public void comprobarConsumoEnergetico(char letra){
            String letraToString = String.valueOf(letra);
@@ -62,31 +64,35 @@ public  class Electrodomestico {
         double peso = scanner.nextDouble();
         this.peso = peso;
         precioFinal(peso,letra);
+
     }
-    public void precioFinal(double peso, String letra){
+    public double precioFinal(double peso, String letra){
+        double precio1 = 0;
         for (ConsumoEnergia i : ConsumoEnergia.values()
              ) {
             boolean equals = letra.equals(i.toString().toLowerCase());
             if(equals &&peso>1&&peso<=19){
-                setPrecio(i.getNumber() + 100);
+                precio1 = setPrecio(i.getNumber() + 100);
 
             } else if (equals &&peso>=20&&peso<=49) {
-                setPrecio(i.getNumber() + 500);
+                precio1= setPrecio(i.getNumber() + 500);
 
             } else if (equals &&peso>=50&&peso<=79) {
-                setPrecio(i.getNumber() + 800);
+                precio1=setPrecio(i.getNumber() + 800);
 
             }else if(equals &&peso>=80){
-                setPrecio(i.getNumber() + 1000);
+                precio1=setPrecio(i.getNumber() + 1000);
             }
         }
+        return precio1;
     }
     public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public double setPrecio(double precio) {
         this.precio = precio;
+        return precio;
     }
 
     public String getColor() {

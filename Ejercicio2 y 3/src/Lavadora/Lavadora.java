@@ -2,6 +2,7 @@ package Lavadora;
 
 import Electrodomestico.Electrodomestico;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Lavadora extends Electrodomestico {
@@ -10,12 +11,15 @@ public class Lavadora extends Electrodomestico {
     public Lavadora() {
 
     }
-    public Lavadora(String name, double precio, String color, char letras, double peso, int carga) {
-        super(name, precio, color, letras, peso);
+    public Lavadora(String name,  String color, char letras, double peso, int carga) {
+        super(name, color, letras, peso);
+
         this.carga = carga;
+        precioFinal();
     }
     @Override
     public void crearElectrodomestico(){
+
         super.crearElectrodomestico();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digita la carga");
@@ -28,6 +32,7 @@ public class Lavadora extends Electrodomestico {
         if(carga > 30){
            setPrecio(getPrecio() + 500);
         }
+
     }
     public int getCarga() {
         return carga;

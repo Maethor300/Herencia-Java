@@ -11,14 +11,14 @@ public class Televisor extends Electrodomestico {
     public Televisor() {
 
     }
-    public Televisor(String name, double precio, String color, char letras, double peso, int resolucion, boolean sintonizador) {
-        super(name, precio, color, letras, peso);
+    public Televisor(String name, String color, char letras, double peso, int resolucion, boolean sintonizador) {
+        super(name, color, letras, peso);
         this.resolucion = resolucion;
         this.sintonizador = sintonizador;
+        precioFinal();
     }
-    public void crearTelevisor(){
+    public void crearElectrodomestico(){
         Scanner scanner = new Scanner(System.in);
-        super.crearElectrodomestico();
         System.out.println("Cantidad de pulgadas");
         this.resolucion = scanner.nextInt();
         System.out.println("Tiene pulgadas 1 para si o 0 para no:");
