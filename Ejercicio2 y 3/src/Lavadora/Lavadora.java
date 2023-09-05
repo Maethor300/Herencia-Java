@@ -17,10 +17,10 @@ public class Lavadora extends Electrodomestico {
         this.carga = carga;
         precioFinal();
     }
-    @Override
-    public void crearElectrodomestico(){
 
-        super.crearElectrodomestico();
+    @Override
+    public void crearElectrodomestico(ArrayList<Electrodomestico> electrodomesticos){
+        super.crearElectrodomestico(electrodomesticos);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digita la carga");
         this.carga = scanner.nextInt();
@@ -51,6 +51,7 @@ public class Lavadora extends Electrodomestico {
                 ", color='" + color + '\'' +
                 ", letras=" + letras +
                 ", peso=" + peso +
+
                 '}';
     }
 }

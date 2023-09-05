@@ -2,28 +2,30 @@ package Electrodomestico;
 import EnumColores.Colores;
 import EnumConsumo.ConsumoEnergia;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public  class Electrodomestico {
+public class Electrodomestico {
     protected String name;
     protected double precio;
     protected String color;
     protected char letras;
     protected double peso;
+
     public Electrodomestico(){
 
     }
 
     public Electrodomestico(String name, String color, char letras, double peso) {
         this.name = name;
-        this.color = color;
+        this.color = comprobarColor(color);
         this.letras = letras;
         this.peso = peso;
         this.precio = precioFinal(peso,String.valueOf(this.letras));
     }
 
 
-
+    Electrodomestico electrodomestico;
     public void comprobarConsumoEnergetico(char letra){
            String letraToString = String.valueOf(letra);
         for (ConsumoEnergia i : ConsumoEnergia.values()
@@ -36,19 +38,21 @@ public  class Electrodomestico {
             }
         }
     }
-    public void comprobarColor(String color1){
-
+    public String comprobarColor(String color1){
+       String trueOR = "";
         for (Colores i : Colores.values()
              ) {
             if(color1.equals(i.toString().toLowerCase())){
+                trueOR = color1;
                 this.color = color1;
-                break;
             }else {
-                color = "Blanco";
+               trueOR = "Blanco";
+               this.color = "Blanco";
             }
         }
+       return trueOR;
     }
-    public void crearElectrodomestico(){
+    public void crearElectrodomestico(ArrayList<Electrodomestico> electrodomesticos){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digita el nombre");
         String name = scanner.nextLine();
@@ -64,7 +68,7 @@ public  class Electrodomestico {
         double peso = scanner.nextDouble();
         this.peso = peso;
         precioFinal(peso,letra);
-
+        electrodomesticos.add(new Electrodomestico(name,color,letraChar,peso));
     }
     public double precioFinal(double peso, String letra){
         double precio1 = 0;
@@ -85,6 +89,15 @@ public  class Electrodomestico {
             }
         }
         return precio1;
+    }
+    public double sumarPrecio(ArrayList<Electrodomestico> electrodomesticos){
+        double suma = 0;
+        for (Electrodomestico i : electrodomesticos
+             ) {
+            suma = suma + i.getPrecio();
+
+        }
+        return suma;
     }
     public double getPrecio() {
         return precio;
@@ -137,6 +150,7 @@ public  class Electrodomestico {
                 ", color='" + color + '\'' +
                 ", letras=" + letras +
                 ", peso=" + peso + "Kg" +
+
                 '}';
     }
 }
