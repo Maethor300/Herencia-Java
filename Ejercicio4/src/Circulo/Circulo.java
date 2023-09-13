@@ -10,11 +10,12 @@ public class Circulo implements CalculosFormas {
     }
     @Override
     public double calcularArea() {
-        return PI *(radio * radio);
+
+        return Math.round( PI * radio * radio * 10.0) / 10.0;
     }
 
     @Override
     public double calcularPerimetro() {
-          return 2*(PI * radio) ;
+          return Math.round(2*PI * radio * 10.0) / 10.0 ;
     }
 }

@@ -7,7 +7,7 @@ import Rectangulo.Rectangulo;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        Circulo circulo1= new Circulo(12);
+        Circulo circulo1= new Circulo(45);
         System.out.println("Area Circulo: " + circulo1.calcularArea());
         System.out.println("Perimetro Del Circulo:" + circulo1.calcularPerimetro());
         Rectangulo rectangulo = new Rectangulo(5,5);

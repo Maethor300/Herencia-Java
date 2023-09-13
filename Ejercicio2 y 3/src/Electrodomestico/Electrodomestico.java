@@ -26,6 +26,9 @@ public class Electrodomestico {
 
 
     Electrodomestico electrodomestico;
+
+
+
     public void comprobarConsumoEnergetico(char letra){
            String letraToString = String.valueOf(letra);
         for (ConsumoEnergia i : ConsumoEnergia.values()
@@ -52,24 +55,29 @@ public class Electrodomestico {
         }
        return trueOR;
     }
-    public void crearElectrodomestico(ArrayList<Electrodomestico> electrodomesticos){
+    public Electrodomestico crearElectrodomestico(ArrayList<Electrodomestico> electrodomesticos){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digita el nombre");
         String name = scanner.nextLine();
         this.name = name;
         System.out.println("Digita el color:");
         String color = scanner.next();
-        comprobarColor(color);
         System.out.println("La letra del Consumo:");
         String letra = scanner.next();
         char letraChar = letra.charAt(0);
-        comprobarConsumoEnergetico(letraChar);
         System.out.println("Digita el peso:");
         double peso = scanner.nextDouble();
         this.peso = peso;
-        precioFinal(peso,letra);
-        electrodomesticos.add(new Electrodomestico(name,color,letraChar,peso));
+        return new Electrodomestico(name,color,letraChar,peso);
     }
+
+    public void obtenerDatos(ArrayList<Electrodomestico> electrodomesticos, Electrodomestico electrodomestico){
+        comprobarColor(electrodomestico.getColor());
+        precioFinal(electrodomestico.getPeso(), String.valueOf(electrodomestico.getLetras()));
+        comprobarConsumoEnergetico(electrodomestico.getLetras());
+        electrodomesticos.add(electrodomestico);
+    }
+
     public double precioFinal(double peso, String letra){
         double precio1 = 0;
         for (ConsumoEnergia i : ConsumoEnergia.values()

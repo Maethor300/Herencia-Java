@@ -2,6 +2,7 @@ package Televisor;
 
 import Electrodomestico.Electrodomestico;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Televisor extends Electrodomestico {
@@ -17,7 +18,9 @@ public class Televisor extends Electrodomestico {
         this.sintonizador = sintonizador;
         precioFinal();
     }
-    public void crearElectrodomestico(){
+    @Override
+    public Electrodomestico crearElectrodomestico(ArrayList<Electrodomestico> electrodomesticos){
+        super.crearElectrodomestico(electrodomesticos);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Cantidad de pulgadas");
         this.resolucion = scanner.nextInt();
@@ -27,6 +30,7 @@ public class Televisor extends Electrodomestico {
             this.sintonizador = true;
         }
         precioFinal();
+        return new Electrodomestico();
     }
     public void precioFinal(){
         System.out.println(getPrecio());

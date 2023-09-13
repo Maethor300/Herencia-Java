@@ -12,7 +12,7 @@ public class Animal {
         this.edad = edad;
         this.raza = raza;
     }
-    public void alimentarse(){
-        System.out.println("Alimentarse");
+    public String alimentarse(){
+        return this.alimento;
     }
 }

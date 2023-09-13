@@ -24,6 +24,7 @@ public class Main {
          electrodomesticos.add(televisor1);
          electrodomesticos.add(televisor2 );
          electrodomesticos.add(lavadora2);
+
          double suma = lavadora1.getPrecio() + televisor1.getPrecio() + televisor2.getPrecio() + lavadora2.getPrecio();
         System.out.println(suma);
         for (Electrodomestico i : electrodomesticos
@@ -38,7 +39,9 @@ public class Main {
              System.out.println("Digita un opcion:");
              int opcion = scanner.nextInt();
              switch (opcion){
-                 case 1 -> electrodomestico.crearElectrodomestico(electrodomesticos);
+                 case 1 -> {electrodomestico.obtenerDatos(electrodomesticos,electrodomestico.crearElectrodomestico(electrodomesticos));
+
+                 }
                  case 2 -> {
                      System.out.println(electrodomestico.toString());
                  }
@@ -51,6 +54,7 @@ public class Main {
                      System.out.println(sumarPrecio);
                  }
              }
+
          }while (true);
     }
 }

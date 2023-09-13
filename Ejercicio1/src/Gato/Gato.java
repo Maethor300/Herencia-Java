@@ -8,8 +8,8 @@ public class Gato extends Animal {
         super(name, alimento, edad, raza);
     }
 
-    public void alimentarse() {
-        System.out.println("Alimentarse con: " + alimento);
+    public String alimentarse() {
+        return this.alimento;
     }
 
     @Override
